@@ -1,31 +1,81 @@
+<style>
+  html, body, .app {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: 'Work Sans', sans-serif;
+  }
+</style>
+
+<style scoped>
+  .app {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .aside {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #dbdbdb;
+    width: 350px;
+  }
+
+  .main {
+    flex-grow: 1;
+  }
+</style>
+
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div class="app">
+    <aside class="aside">
+      <nav>
+        <div class="tabs is-large is-fullwidth">
+          <ul>
+            <li class="is-active">
+              <a>
+                <span class="icon is-medium">
+                  <i class="fas fa-compass fa-lg"></i>
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a>
+                <span class="icon is-medium">
+                  <i class="fas fa-user fa-lg"></i>
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a>
+                <span class="icon is-medium">
+                  <i class="fas fa-heart fa-lg"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <Feed />
+    </aside>
+
+    <main class="main">
+      <router-view />
+    </main>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+  import Feed from './components/Feed.vue';
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  export default {
+    name: 'App',
+    components: { Feed }
+  };
+</script>
