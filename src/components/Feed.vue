@@ -55,7 +55,10 @@
                         {{ article.title }}
                     </strong>
                     <div>
-                        {{ article.description.slice(0, 50).trim() }}&hellip;
+                        <span :title="article.description">
+                            {{ article.description.slice(0, 50).trim() }}&hellip;
+                        </span>
+
                         <span class="article-published has-text-grey">
                             {{ article.published }} ago
                         </span>
@@ -68,6 +71,7 @@
 
 <script>
     import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+    import differenceInMinutes from 'date-fns/difference_in_minutes';
 
     export default {
         name: 'Feed',
@@ -97,10 +101,16 @@
         },
         async mounted() {
             const rawArticles = localStorage.getItem('articles');
+            const rawLastFetch = localStorage.getItem('lastFetch');
 
-            if (rawArticles) {
-                this.articles = JSON.parse(rawArticles);
-                return;
+            if (rawArticles && rawLastFetch) {
+                const lastFetch = new Date(rawLastFetch);
+                const minutes = differenceInMinutes(new Date(), lastFetch);
+
+                if (minutes < 5) {
+                    this.articles = JSON.parse(rawArticles);
+                    return;
+                }
             }
 
             const apiKey = '64314116bdfe4eeaa7c6a1ed2d286c62';
@@ -108,6 +118,9 @@
             const response = await fetch(url);
             const data = await response.json();
             this.articles = data.articles;
+
+            localStorage.setItem('articles', JSON.stringify(this.articles));
+            localStorage.setItem('lastFetch', new Date().toISOString());
         }
     };
 </script>
