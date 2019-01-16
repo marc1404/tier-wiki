@@ -1,5 +1,5 @@
 <style scoped>
-  .columns {
+  .discover, .columns {
     height: 100%;
   }
 
@@ -43,17 +43,26 @@
     bottom: -10px;
     right: -10px;
   }
+  .search {
+    height: 57px;
+  }
 </style>
 
 <template>
-  <div class="columns is-multiline">
-    <div class="column is-4" v-for="card in enrichedCards">
-      <div class="k-card" @click="goToAnimal(card.slug)">
-        <div class="k-card-image" :style="card.style"></div>
-        <div class="k-card-label">
+  <div class="discover">
+    <div class="search">
+      Search
+    </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-4" v-for="card in enrichedCards">
+        <div class="k-card" @click="goToAnimal(card.slug)">
+          <div class="k-card-image" :style="card.style"></div>
+          <div class="k-card-label">
         <span class="tag is-dark is-large">
           {{ card.name }}
         </span>
+          </div>
         </div>
       </div>
     </div>
@@ -72,7 +81,7 @@ export default {
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Tiger_shark.jpg/1200px-Tiger_shark.jpg'
       },
       {
-        name: 'Raccoonish',
+        name: 'Raccoon',
         image: 'https://images.unsplash.com/photo-1524246009948-6dddf3f8fc23'
       },
       {
@@ -80,16 +89,16 @@ export default {
         image: 'https://images.unsplash.com/photo-1454991727061-be514eae86f7'
       },
       {
-        name: 'Dog',
-        image: 'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12205540/Eurasier-on-White-01.jpg'
+        name: 'Honey Bee',
+        image: 'https://timedotcom.files.wordpress.com/2017/10/honey-bees-insecticide.jpg'
       },
       {
         name: 'Säbelschnäbler',
         image: 'https://en.zopix.net/image_upload/214161-tiere-saebelschnaebler-watvoegel-nordsee.jpg'
       },
       {
-        name: 'Elephant',
-        image: 'https://images.unsplash.com/photo-1536798227072-f571dcefdef1'
+        name: 'Sea Angel',
+        image: 'https://external-preview.redd.it/KbaEgZN451GG9u0qgJwpOwMYo_EM7Ir5Uwy9tQsSCBs.jpg?auto=webp&s=379e945e4d8e970491b6916116f303fe00e1ef4b'
       }
     ];
   },

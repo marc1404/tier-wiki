@@ -1,15 +1,15 @@
 <style scoped>
-  .tiger-shark {
+  .animal {
     height: 100vh;
-    background-color: #efeaeb;
-    background-image: url('../assets/tiger-shark.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 </style>
 
 <template>
-  <div class="tiger-shark"></div>
+  <div class="animal">
+    <img src="../assets/tiger-shark.jpg" alt="Tiger Shark" />
+  </div>
 </template>
 
 <script>
