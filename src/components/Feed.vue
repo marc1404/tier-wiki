@@ -59,8 +59,8 @@
                             {{ article.description.slice(0, 50).trim() }}&hellip;
                         </span>
 
-                        <span class="article-published has-text-grey">
-                            {{ article.published }} ago
+                        <span class="article-published has-text-grey" :title="article.publishedReadable">
+                            {{ article.publishedAgo }} ago
                         </span>
                     </div>
                 </div>
@@ -72,6 +72,7 @@
 <script>
     import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
     import differenceInMinutes from 'date-fns/difference_in_minutes';
+    import format from 'date-fns/format';
 
     export default {
         name: 'Feed',
@@ -86,7 +87,8 @@
                 return this.filteredArticles.map(article => ({
                     title: article.title,
                     description: article.description,
-                    published: distanceInWordsToNow(article.publishedAt),
+                    publishedAgo: distanceInWordsToNow(article.publishedAt),
+                    publishedReadable: format(article.publishedAt, 'D. MMMM YYYY HH:mm'),
                     image: article.urlToImage,
                     url: article.url
                 }));
