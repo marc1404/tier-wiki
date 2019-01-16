@@ -3,7 +3,7 @@
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 1rem;
+    padding: 20px;
   }
 
   .tiger-shark {
