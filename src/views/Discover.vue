@@ -64,8 +64,8 @@
 
     <div class="columns is-multiline">
       <div class="column is-4" v-for="card in enrichedCards">
-        <div class="k-card" @click="goToAnimal(card.slug)">
-          <div class="k-card-image" :style="card.style"></div>
+        <div class="k-card" :style="card.cardStyle" @click="goToAnimal(card.slug)">
+          <div class="k-card-image" :style="card.imageStyle"></div>
           <div class="k-card-label">
         <span class="tag is-dark is-large">
           {{ card.name }}
@@ -115,10 +115,16 @@ export default {
   }),
   computed: {
     enrichedCards() {
+      const { search, cards } = this;
+      const query = search.toLowerCase();
+
       return this.cards.map(card => ({
         ...card,
         slug: slugify(card.name),
-        style: {
+        cardStyle: {
+          opacity: card.name.toLowerCase().includes(query) ? 1 : 0.3
+        },
+        imageStyle: {
           backgroundImage: `url('${card.image}')`
         }
       }));
