@@ -10,8 +10,8 @@
   }
 
   .k-card {
-    width: 75%;
-    height: 75%;
+    width: 70%;
+    height: 70%;
     transition: transform 300ms ease-in-out;
     position: relative;
     cursor: pointer;
@@ -43,15 +43,23 @@
     bottom: -10px;
     right: -10px;
   }
+
   .search {
     height: 57px;
+    border-radius: 0;
+    border-top: none;
+    border-right: none;
+    border-left: none;
   }
 </style>
 
 <template>
   <div class="discover">
-    <div class="search">
-      Search
+    <div class="control has-icons-right">
+      <input class="input is-large has-text-centered search is-shadowless" type="search" placeholder="Search" v-model="search">
+      <span class="icon is-right">
+          <i class="fas fa-search"></i>
+        </span>
     </div>
 
     <div class="columns is-multiline">
@@ -102,6 +110,9 @@ export default {
       }
     ];
   },
+  data: () => ({
+    search: ''
+  }),
   computed: {
     enrichedCards() {
       return this.cards.map(card => ({

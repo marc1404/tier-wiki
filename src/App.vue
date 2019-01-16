@@ -6,7 +6,7 @@
   }
 
   body {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Lato', sans-serif;
   }
 </style>
 
@@ -35,27 +35,27 @@
         <div class="tabs is-large is-fullwidth">
           <ul>
             <li class="is-active">
-              <a>
+              <router-link to="/">
                 <span class="icon is-medium">
                   <i class="fas fa-compass fa-lg"></i>
                 </span>
-              </a>
+              </router-link>
             </li>
 
             <li>
-              <a>
+              <router-link to="/">
                 <span class="icon is-medium">
                   <i class="fas fa-user fa-lg"></i>
                 </span>
-              </a>
+              </router-link>
             </li>
 
             <li>
-              <a>
+              <router-link to="/">
                 <span class="icon is-medium">
                   <i class="fas fa-heart fa-lg"></i>
                 </span>
-              </a>
+              </router-link>
             </li>
           </ul>
         </div>
