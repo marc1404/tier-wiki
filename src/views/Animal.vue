@@ -1,7 +1,15 @@
+<style scoped>
+  .tiger-shark {
+    height: 100vh;
+    background-color: #efeaeb;
+    background-image: url('../assets/tiger-shark.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+</style>
+
 <template>
-  <div>
-    Animal
-  </div>
+  <div class="tiger-shark"></div>
 </template>
 
 <script>

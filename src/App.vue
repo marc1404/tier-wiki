@@ -2,11 +2,10 @@
   html, body, .app {
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
 
   body {
-    overflow-x: hidden;
-    overflow-y: scroll;
     font-family: 'Work Sans', sans-serif;
   }
 </style>
